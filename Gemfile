@@ -66,3 +66,5 @@ gem "rspec-rails", "~> 7.0", groups: [ :development, :test ]
 gem "factory_bot_rails", "~> 6.4", groups: [ :development, :test ]
 gem "pry", groups: [ :development, :test ]
 gem "ostruct", groups: [ :development, :test ]
+
+gem "tailwindcss-rails", "~> 2.7"

@@ -39,3 +39,6 @@
 
 coverage/*
 spec_report/*
+
+/app/assets/builds/*
+!/app/assets/builds/.keep
