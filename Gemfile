@@ -54,9 +54,14 @@ group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
   gem "capybara"
   gem "selenium-webdriver"
+  gem "simplecov", require: false
 end
 
 
 gem "dotenv-rails", groups: [ :development, :test ]
 
 gem "devise", "~> 4.9"
+
+gem "rspec-rails", "~> 7.0", groups: [ :development, :test ]
+gem "factory_bot_rails", "~> 6.4", groups: [ :development, :test ]
+gem "pry", groups: [ :development, :test ]
