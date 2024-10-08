@@ -36,3 +36,6 @@
 
 /db/schema.rb
 /Gemfile.lock
+
+coverage/*
+spec_report/*
