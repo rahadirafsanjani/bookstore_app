@@ -1,0 +1,20 @@
+<h1>Daftar Buku</h1>
+
+<table border="1">
+  <thead>
+    <tr>
+      <th>Judul</th>
+      <th>Penulis</th>
+      <th>Tahun Terbit</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @books.each do |book| %>
+      <tr>
+        <td><%= book.title %></td>
+        <td><%= book.author.name %></td>
+        <td><%= book.published %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

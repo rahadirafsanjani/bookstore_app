@@ -4,7 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  validates :email, presence: true, uniqueness: true
-  validates :username, presence: true, format: /\A[^0-9`!@#\$%\^&*+_=]+\z/
+  validates :email, presence: true, uniqueness: true, format: { with: /\A[^@\s]+@[^@\s]+\z/, message: "must be a valid email format" }
+  validates :username, presence: true
   validates :password, presence: true
 end
