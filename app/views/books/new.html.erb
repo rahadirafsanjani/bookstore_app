@@ -1,35 +1,45 @@
-<h1>Tambah Buku Baru</h1>
+<div class="bg-auto min-h-screen flex items-center justify-center bg-gray-800">
+  <div class="max-w-sm w-full bg-slate-900 p-8 rounded-lg shadow-lg">
+    <%= form_with(model: @book, local: true) do |form| %>
+      <% if @book.errors.any? %>
+        <div id="error_explanation">
+          <h2 class="text-red-500"><%= pluralize(@book.errors.count, "error") %> prohibited this book from being saved:</h2>
+          <ul>
+            <% @book.errors.full_messages.each do |message| %>
+              <li class="text-red-300"><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
 
-<%= form_with(model: @book, local: true) do |form| %>
-  <% if @book.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@book.errors.count, "error") %> prohibited this book from being saved:</h2>
-      <ul>
-        <% @book.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
+      <div class="field mb-5">
+        <%= form.label :title, 'Judul', class: "block mb-2 text-sm font-medium text-gray-300" %>
+        <%= form.text_field :title, 
+              class: "bg-gray-700 border border-gray-600 text-gray-300 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 placeholder-gray-400", 
+              placeholder: "Masukkan Judul Buku" %>
+      </div>
+
+      <div class="field mb-5">
+        <%= form.label :published, 'Tahun Terbit', class: "block mb-2 text-sm font-medium text-gray-300" %>
+        <%= form.date_field :published, 
+              class: "bg-gray-700 border border-gray-600 text-gray-300 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5", 
+              placeholder: "Pilih Tanggal" %>
+      </div>
+
+      <div class="field mb-5">
+        <%= form.label :author_id, 'Penulis', class: "block mb-2 text-sm font-medium text-gray-300" %>
+        <%= form.collection_select :author_id, @authors, :id, :name, { prompt: 'Pilih Penulis' }, 
+              { class: "bg-gray-700 border border-gray-600 text-gray-300 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" } %>
+      </div>
+
+      <div class="actions">
+        <%= form.submit 'Buat Buku', 
+              class: "text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full px-5 py-2.5" %>
+      </div>
+    <% end %>
+
+    <div class="mt-4 text-center text-slate-200">
+      <%= link_to 'Kembali ke Daftar Buku', books_path, class: "text-blue-400 hover:underline" %>
     </div>
-  <% end %>
-
-  <div>
-    <%= form.label :title, 'Judul' %>
-    <%= form.text_field :title %>
   </div>
-
-  <div>
-    <%= form.label :published, 'Tahun Terbit' %>
-    <%= form.datetime_select :published %> <!-- Menggunakan datetime_select untuk tahun terbit -->
-  </div>
-
-  <div>
-    <%= form.label :author_id, 'Penulis' %>
-    <%= form.collection_select :author_id, @authors, :id, :name, prompt: 'Pilih Penulis' %>
-  </div>
-
-  <div>
-    <%= form.submit 'Buat Buku' %>
-  </div>
-<% end %>
-
-<%= link_to 'Kembali ke Daftar Buku', books_path %>
+</div>
