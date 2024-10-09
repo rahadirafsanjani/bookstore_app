@@ -40,3 +40,5 @@ gem "tailwindcss-rails", "~> 2.7"
 gem "pagy", "~> 9.1"
 
 gem "faker", "~> 3.4"
+
+gem "sidekiq", "~> 7.3"
