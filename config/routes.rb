@@ -16,4 +16,9 @@ Rails.application.routes.draw do
 
   require "sidekiq/web"
   mount Sidekiq::Web => "/sidekiq"
+
+  namespace :apis do
+    get "list", to: "books#list"
+    get "restricted_list", to: "books#restricted_list"
+  end
 end
