@@ -2,7 +2,7 @@ class BooksController < ApplicationController
   before_action :authenticate_user!
   include Pagy::Backend
   def index
-    @pagy, @books = pagy(Book.all, limit: 12)
+    @pagy, @books = pagy(Book.all, limit: 8)
   end
 
   def new
