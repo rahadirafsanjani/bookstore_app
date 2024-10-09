@@ -42,3 +42,7 @@ gem "pagy", "~> 9.1"
 gem "faker", "~> 3.4"
 
 gem "sidekiq", "~> 7.3"
+
+gem "letter_opener", "~> 1.10"
+
+gem "sinatra", "~> 4.0"

@@ -13,4 +13,7 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   root to: "home#index"
   resources :books, only: [ :index, :new, :create ]
+
+  require "sidekiq/web"
+  mount Sidekiq::Web => "/sidekiq"
 end
