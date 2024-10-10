@@ -17,4 +17,4 @@ Follow these steps to set up your development environment:
 5. sidekiq
 
 Running Test 
-bundle exec rspec spec/models/user_spec.rb --format documentation --format json --out ./spec_report/rspec_report.json
+bundle exec rspec spec/models --format documentation --format json --out ./spec_report/rspec_report.json
