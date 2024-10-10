@@ -1,15 +1,24 @@
 <% if resource.errors.any? %>
-  <div id="error_explanation" data-turbo-cache="false">
-    <h2>
-      <%= I18n.t("errors.messages.not_saved",
-                 count: resource.errors.count,
-                 resource: resource.class.model_name.human.downcase)
-       %>
-    </h2>
-    <ul>
-      <% resource.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-    </ul>
+  <div id="error_popup_wrapper" class="fixed inset-0 z-50 flex items-center justify-center backdrop-blur-sm bg-black bg-opacity-20">
+    <div id="error_popup" class="bg-red-100 border border-red-400 text-red-700 py-10 px-10 rounded-lg shadow-lg relative" role="alert" data-turbo-cache="false">
+      <button type="button" class="absolute top-2 right-3 text-red-500 hover:text-red-700 font-bold text-xl" onclick="closePopup()">×</button>
+      <h2 class="font-bold text-lg">
+        <%= I18n.t("errors.messages.not_saved",
+                   count: resource.errors.count,
+                   resource: resource.class.model_name.human.downcase)
+        %>
+      </h2>
+      <ul class="mt-2 list-disc list-inside">
+        <% resource.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
   </div>
+
+  <script>
+    function closePopup() {
+      document.getElementById('error_popup_wrapper').style.display = 'none';
+    }
+  </script>
 <% end %>
