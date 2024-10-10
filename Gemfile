@@ -46,3 +46,5 @@ gem "sidekiq", "~> 7.3"
 gem "letter_opener", "~> 1.10"
 
 gem "sinatra", "~> 4.0"
+
+gem "redis", "~> 4.0"

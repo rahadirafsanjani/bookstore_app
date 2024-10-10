@@ -1,0 +1,43 @@
+version: '3.8'
+
+services:
+  web:
+    build: .
+    command: bundle exec rails server -b 0.0.0.0
+    volumes:
+      - .:/app
+    ports:
+      - "3000:3000"
+    environment:
+      DB_HOST: ep-crimson-term-a1phe3o7.ap-southeast-1.aws.neon.tech
+      DB_USER: rahadirafsanjani
+      DB_PASSWORD: SPmG7tb1dziv
+      DB_NAME: bookstore_
+      REDIS_URL: redis://redis:6379/0
+    networks:
+      - redis-net
+
+  sidekiq:
+    build: .
+    command: bundle exec sidekiq
+    volumes:
+      - .:/app
+    environment:
+      REDIS_URL: redis://redis:6379/0
+    networks:
+      - redis-net
+
+  redis:
+    image: redis:6.0-alpine
+    command: ["redis-server", "--appendonly", "yes"]
+    hostname: redis
+    networks:
+      - redis-net
+    volumes:
+      - redis-data:/data
+
+networks:
+  redis-net:
+
+volumes:
+  redis-data:
