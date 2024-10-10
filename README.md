@@ -40,3 +40,7 @@ bundle exec sidekiq
 
 ### See Cron/Worker Job
 - localhost:3000/sidekiq
+
+### API Endpoint
+- http://127.0.0.1:3000/apis/list (No need login)
+- http://127.0.0.1:3000/apis/restricted_list (Login first)
